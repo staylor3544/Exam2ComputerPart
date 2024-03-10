@@ -2,7 +2,7 @@
 #   prints out a packing list for that vacation type
 
 ###############################################################################
-# TODO: 1. (5 pts)
+# DONE: 1. (5 pts)
 #
 #   For this module, we are going to create a vacation planner that will help
 #   the user plan what they need to bring on vacation.
@@ -28,9 +28,18 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def starter_list(vacation_type):
+    match vacation_type:
+        case "beach":
+            return ["swimsuit", "towel", "sunscreen"]
+        case "mountain":
+            return ["hiking boots", "warm jacket", "water bottle"]
+        case "city":
+            return ["comfortable shoes", "camera", "umbrella"]
+        case _:
+            return []
 ###############################################################################
-# TODO: 2. (4 pts)
+# DONE: 2. (4 pts)
 #
 #   Now, perhaps the user would like to bring some of their own stuff that they
 #   specify.
@@ -48,9 +57,16 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
-
+def gather_items():
+    items = []
+    while True:
+        user_input = input("Please enter an item (type 'end' to finish): ")
+        if user_input.lower() == 'end':
+            break
+        items.append(user_input)
+    return items
 ###############################################################################
-# TODO: 3. (6 pts)
+# DONE: 3. (6 pts)
 #
 #   For this _TODO_, write a function called main() that will start things off.
 #
@@ -75,4 +91,24 @@
 #   Make sure you call the function to start things off.
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
-###############################################################################
+#############################################
+def main():
+    print("Welcome to the Vacation Planner!")
+    
+    vacation_type = input("Please enter your vacation type (beach, mountain, city): ")
+    starter_items = starter_list(vacation_type.lower())
+    
+    print("\nStarter List:")
+    for item in starter_items:
+        print(f"- {item}")
+    
+    user_items = gather_items()
+    
+    print("\nYour Full Packing List:")
+    full_packing_list = starter_items + user_items
+    for i, item in enumerate(full_packing_list, start=1):
+        print(f"{i}. {item}")
+    
+    print("\nHave a great vacation!")
+
+main()

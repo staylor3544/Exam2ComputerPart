@@ -1,5 +1,5 @@
 ###############################################################################
-# TODO: 1. (5 pts)
+# DONE: 1. (5 pts)
 #
 #   For this extra credit question, we are going to create a program that can
 #   draw a house out of stars. This is very similiar to the shapes that you did
@@ -61,3 +61,21 @@
 #
 #   Once you have done this, then change the above _TODO_ to DONE.
 ###############################################################################
+def house(height, width):
+    if height < 2 or width < 3:
+        print("Invalid dimensions!")
+    else:
+        for i in range(1, height + 1):
+            spaces = " " * (width - i)
+            if i == 1:
+                print(spaces + "*")
+            elif i == 2:
+                print(spaces + "***")
+            else:
+                print(spaces + "*" * (2 * i - 3 + 1) + "*") 
+
+        for _ in range(height - 1):
+            print(" " * (width - 3) + "*" + " " * (width - 2) + "*")
+        print( " " * (width - 3) + "*" * width)
+
+house(4,5)
